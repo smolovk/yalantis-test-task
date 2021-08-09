@@ -1,11 +1,16 @@
 import path from 'path';
 import User from '../db/models/User';
-import { resizeAndSave } from '../libs/images';
+import resizeAndSave from '../libs/images';
 
 class UserService {
   static async create(req: any) {
     const tmpPath = await req.file.path;
-    const permanentPath = await path.join(__dirname, '..', String(process.env.SAVE_DIR), req.file.filename);
+    const permanentPath = await path.join(
+      __dirname,
+      '..',
+      String(process.env.SAVE_DIR),
+      req.file.filename,
+    );
 
     // resize image to 200x200 px and save
     await resizeAndSave(tmpPath, permanentPath);

@@ -1,6 +1,6 @@
 import express from 'express';
 import { create, findById } from '../controllers/userController';
-import upload from '../libs/images';
+import upload from '../libs/multer';
 
 const router = express.Router();
 
